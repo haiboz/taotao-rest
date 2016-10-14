@@ -46,6 +46,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		//返回值list
 		List resultList = new ArrayList<>();
 		//向list中添加节点
+		int count = 0;
 		for (TbItemCat tbItemCat : list) {
 			//判断是否为父节点
 			if (tbItemCat.getIsParent()) {
@@ -59,6 +60,10 @@ public class ItemCatServiceImpl implements ItemCatService {
 				catNode.setItem(getCatList(tbItemCat.getId()));
 				
 				resultList.add(catNode);
+				count ++;
+				if(count >= 14 && parentId == 0){
+					break;
+				}
 			//如果是叶子节点
 			} else {
 				resultList.add("/products/"+tbItemCat.getId()+".html|" + tbItemCat.getName());
