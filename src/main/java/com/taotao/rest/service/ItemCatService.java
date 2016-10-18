@@ -1,8 +1,7 @@
 package com.taotao.rest.service;
 
-import java.util.List;
+import com.taotao.common.pojo.ItemCatResult;
 
-import com.taotao.rest.pojo.ItemCatResult;
 
 
 public interface ItemCatService {

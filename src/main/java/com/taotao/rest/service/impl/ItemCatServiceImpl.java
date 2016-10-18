@@ -6,12 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.taotao.common.pojo.ItemCat;
+import com.taotao.common.pojo.ItemCatResult;
 import com.taotao.mapper.TbItemCatMapper;
 import com.taotao.pojo.TbItemCat;
 import com.taotao.pojo.TbItemCatExample;
 import com.taotao.pojo.TbItemCatExample.Criteria;
-import com.taotao.rest.pojo.ItemCat;
-import com.taotao.rest.pojo.ItemCatResult;
 import com.taotao.rest.service.ItemCatService;
 
 @Service
@@ -36,6 +36,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 	 * @param parentId
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private List<?> getCatList(long parentId) {
 		//创建查询条件
 		TbItemCatExample example = new TbItemCatExample();
@@ -58,7 +59,6 @@ public class ItemCatServiceImpl implements ItemCatService {
 				}
 				catNode.setUrl("/products/"+tbItemCat.getId()+".html");
 				catNode.setItem(getCatList(tbItemCat.getId()));
-				
 				resultList.add(catNode);
 				count ++;
 				if(count >= 14 && parentId == 0){
