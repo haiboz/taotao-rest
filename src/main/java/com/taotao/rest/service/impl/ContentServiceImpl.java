@@ -19,7 +19,7 @@ public class ContentServiceImpl implements ContentService {
 	public List<TbContent> getContentList(Long categoryId) {
 		TbContentExample example = new TbContentExample();
 		example.createCriteria().andCategoryIdEqualTo(categoryId);
-		example.setOrderByClause("created desc");
+		example.setOrderByClause("updated desc");
 		List<TbContent> list = mapper.selectByExample(example);
 		return list;
 	}
